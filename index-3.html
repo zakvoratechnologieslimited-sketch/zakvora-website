@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#071a45">
+  <meta name="description" content="ZAKVORA Technologies Limited — Data Analytics, Research, AI, ICT and Digital Solutions.">
+  <title>ZAKVORA Technologies Limited | Data • Technology • Research</title>
+  <link rel="icon" href="assets/zakvora-logo.jpg">
+
+  <style>
+    :root{
+      --navy:#071a45;
+      --navy2:#0b255f;
+      --blue:#0878e8;
+      --cyan:#19b9ff;
+      --orange:#ff7a00;
+      --ink:#10204a;
+      --muted:#61708b;
+      --light:#f4f8ff;
+      --white:#fff;
+      --line:#dce6f5;
+      --shadow:0 18px 55px rgba(7,26,69,.12);
+      --radius:24px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:#fff;
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(1160px,92%);margin:auto}
+
+    /* Announcement */
+    .announcement{
+      background:linear-gradient(90deg,var(--navy),#0b347d,var(--blue));
+      color:#fff;text-align:center;padding:9px 15px;font-size:13px;font-weight:700;
+    }
+    .announcement a{text-decoration:underline}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:1000;
+      background:rgba(255,255,255,.95);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .brand{display:flex;align-items:center;gap:11px}
+    .brand img{width:54px;height:54px;object-fit:contain;border-radius:10px}
+    .brand-text strong{display:block;font-size:19px;letter-spacing:.4px;color:var(--navy)}
+    .brand-text span{display:block;font-size:10px;letter-spacing:2px;font-weight:800;color:var(--blue)}
+    .links{display:flex;align-items:center;gap:24px;font-size:14px;font-weight:700}
+    .links a:hover{color:var(--blue)}
+    .nav-cta{background:var(--blue);color:#fff!important;padding:11px 17px;border-radius:12px}
+    .menu{display:none;border:0;background:none;font-size:28px;color:var(--navy)}
+
+    /* Hero */
+    .hero{
+      background:
+        radial-gradient(circle at 90% 15%,rgba(25,185,255,.16),transparent 28%),
+        radial-gradient(circle at 5% 80%,rgba(8,120,232,.09),transparent 30%),
+        linear-gradient(180deg,#f9fcff,#fff);
+      padding:76px 0 70px;
+      overflow:hidden;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center}
+    .eyebrow{display:inline-flex;gap:9px;align-items:center;color:var(--blue);font-size:13px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase}
+    .eyebrow:before{content:"";width:34px;height:3px;background:var(--blue);border-radius:5px}
+    h1{font-size:clamp(43px,6vw,76px);line-height:.98;letter-spacing:-3px;margin:18px 0 24px;color:var(--navy)}
+    h1 span{color:var(--blue)}
+    .hero p{font-size:18px;color:var(--muted);max-width:650px}
+    .actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:13px;font-weight:850;border:1px solid var(--line)}
+    .primary{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 12px 25px rgba(8,120,232,.2)}
+    .secondary{background:#fff}
+    .hero-card{
+      background:linear-gradient(145deg,var(--navy),#0d347b);
+      color:#fff;border-radius:32px;padding:36px;box-shadow:var(--shadow);position:relative;overflow:hidden
+    }
+    .hero-card:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-100px;top:-100px;background:rgba(25,185,255,.14)}
+    .hero-card h2{font-size:32px;line-height:1.1;margin-bottom:13px;position:relative;z-index:1}
+    .hero-card p{color:#dce8ff;font-size:15px;position:relative;z-index:1}
+    .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:25px;position:relative;z-index:1}
+    .mini{padding:17px;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.07);border-radius:16px}
+    .mini b{display:block;font-size:16px}.mini small{color:#c4d4f5}
+
+    /* Sections */
+    section{padding:82px 0}
+    .section-head{max-width:720px;margin-bottom:38px}
+    .section-head .eyebrow{margin-bottom:12px}
+    h2.section-title{font-size:clamp(32px,4vw,48px);line-height:1.05;color:var(--navy);letter-spacing:-1.5px}
+    .section-head p{color:var(--muted);margin-top:14px}
+
+    /* Services */
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{border:1px solid var(--line);border-radius:20px;padding:25px;background:#fff;transition:.25s;box-shadow:0 8px 28px rgba(7,26,69,.04)}
+    .service:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .icon{width:48px;height:48px;border-radius:14px;background:#eaf5ff;display:grid;place-items:center;font-size:23px;margin-bottom:18px}
+    .service h3{font-size:20px;margin-bottom:7px}.service p{color:var(--muted);font-size:14px}
+
+    /* About */
+    .about{background:var(--light)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}
+    .about-copy p{color:var(--muted);margin:14px 0}
+    .checks{display:grid;gap:11px;margin-top:20px}
+    .check{display:flex;gap:10px;align-items:flex-start;font-weight:700}
+    .check span{color:var(--blue)}
+    .mission-card{background:var(--navy);color:#fff;border-radius:28px;padding:36px;box-shadow:var(--shadow)}
+    .mission-card h3{font-size:28px;margin-bottom:12px}.mission-card p{color:#cddcff}
+    .pill-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+    .pill{background:rgba(255,255,255,.09);padding:9px 12px;border-radius:999px;font-size:12px;color:#dce8ff}
+
+    /* Training */
+    .training-wrap{background:#fff}
+    .training-card{background:linear-gradient(135deg,#eef7ff,#fff);border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:var(--shadow)}
+    .flyer{border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+    .flyer img{width:100%;height:auto}
+    .training-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 4px 4px;flex-wrap:wrap}
+    .training-bottom h3{font-size:24px;color:var(--navy)}.training-bottom p{color:var(--muted)}
+
+    /* Portfolio */
+    .portfolio{background:var(--light)}
+    .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .portfolio-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px}
+    .portfolio-card h3{margin:12px 0 5px}.portfolio-card p{color:var(--muted);font-size:14px}
+
+    /* Social */
+    .social-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .social{padding:20px;border:1px solid var(--line);border-radius:18px;font-weight:800;background:#fff}
+    .social span{display:block;color:var(--muted);font-size:12px;margin-top:4px;font-weight:500}
+
+    /* Contact */
+    .contact{background:var(--navy);color:#fff}
+    .contact .section-title{color:#fff}
+    .contact .section-head p{color:#cbd9f5}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px}
+    .contact-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:22px;padding:26px}
+    .contact-item{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+    .contact-item:last-child{border-bottom:0}.contact-item small{color:#b9c9e9;display:block}.contact-item a{font-weight:700;word-break:break-word}
+
+    footer{background:#041332;color:#cbd9f5;padding:30px 0}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+    .footer-brand{color:#fff;font-weight:900}.footer-row small{font-size:12px}
+
+    /* Floating widgets */
+    .float-welcome{
+      position:fixed;right:20px;bottom:88px;z-index:900;
+      max-width:270px;background:#fff;border:1px solid var(--line);
+      box-shadow:0 15px 45px rgba(7,26,69,.18);border-radius:18px;padding:15px 17px;
+      animation:floatIn .8s ease both;
+    }
+    .float-welcome strong{display:block;color:var(--navy);margin-bottom:3px}
+    .float-welcome p{font-size:12px;color:var(--muted)}
+    .close-welcome{position:absolute;right:8px;top:6px;border:0;background:none;color:#789;font-size:18px}
+    .whatsapp{
+      position:fixed;right:20px;bottom:20px;z-index:901;width:54px;height:54px;border-radius:50%;
+      display:grid;place-items:center;background:#1bbf63;color:#fff;font-size:26px;
+      box-shadow:0 12px 30px rgba(27,191,99,.3)
+    }
+    @keyframes floatIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+
+    @media(max-width:900px){
+      .links{display:none}.menu{display:block}
+      .links.open{display:flex;position:absolute;left:0;right:0;top:76px;background:#fff;padding:20px;flex-direction:column;align-items:stretch;border-bottom:1px solid var(--line)}
+      .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+      .service-grid{grid-template-columns:1fr 1fr}
+      .portfolio-grid{grid-template-columns:1fr 1fr}
+      .social-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:580px){
+      .nav{height:68px}.brand img{width:45px;height:45px}.brand-text strong{font-size:15px}.brand-text span{font-size:8px}
+      .hero{padding:55px 0}.hero-card{padding:27px}.mini-grid{grid-template-columns:1fr}
+      section{padding:62px 0}.service-grid,.portfolio-grid,.social-grid{grid-template-columns:1fr}
+      .float-welcome{right:12px;left:12px;bottom:84px;max-width:none}
+      .whatsapp{right:15px;bottom:15px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement">
+    🚀 ZAKVORA is growing — <a href="#training">upcoming Data Analysis Training</a> &nbsp;•&nbsp; 🌐 Website now live
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <img src="assets/zakvora-logo.jpg" alt="ZAKVORA Technologies Limited logo">
+        <div class="brand-text">
+          <strong>ZAKVORA</strong>
+          <span>TECHNOLOGIES LIMITED</span>
+        </div>
+      </a>
+
+      <button class="menu" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+
+      <nav class="links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#training">Training</a>
+        <a href="#portfolio">Projects</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Data • Technology • Research • Digital Solutions</div>
+          <h1>Turning <span>Data</span> Into Practical Solutions.</h1>
+          <p>
+            ZAKVORA Technologies Limited is a growing digital solutions company helping
+            students, professionals and businesses learn, work with data, use technology
+            and solve real-world problems.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#training">🎓 Explore Training</a>
+            <a class="btn secondary" href="#contact">🤝 Work With Us</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h2>Smarter Data.<br>Better Decisions.<br><span style="color:var(--cyan)">Greater Impact.</span></h2>
+          <p>Practical services and learning opportunities built around data, research, AI and digital skills.</p>
+          <div class="mini-grid">
+            <div class="mini"><b>📊 Data</b><small>Analytics & Reporting</small></div>
+            <div class="mini"><b>🔬 Research</b><small>Academic & Business Support</small></div>
+            <div class="mini"><b>🤖 AI</b><small>Practical AI Solutions</small></div>
+            <div class="mini"><b>💻 ICT</b><small>Digital Skills Training</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <div class="eyebrow">About ZAKVORA</div>
+          <h2 class="section-title">Building a practical digital ecosystem.</h2>
+          <p>
+            ZAKVORA Technologies Limited is being built as a professional technology and
+            digital solutions brand focused on making data, research and digital skills
+            more practical and accessible.
+          </p>
+          <p>
+            We are developing a community of learners, professionals and collaborators
+            who can learn, create, work together and deliver useful solutions.
+          </p>
+          <div class="checks">
+            <div class="check"><span>✓</span> Practical, hands-on learning</div>
+            <div class="check"><span>✓</span> Real-world projects and solutions</div>
+            <div class="check"><span>✓</span> Collaboration and professional growth</div>
+            <div class="check"><span>✓</span> Data-driven thinking and innovation</div>
+          </div>
+        </div>
+
+        <div class="mission-card">
+          <h3>Our Direction</h3>
+          <p>
+            To grow a trusted Nigerian digital brand that connects people, skills,
+            technology and opportunities.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Data Analytics</span>
+            <span class="pill">Research</span>
+            <span class="pill">Artificial Intelligence</span>
+            <span class="pill">ICT</span>
+            <span class="pill">Digital Skills</span>
+            <span class="pill">Business Solutions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">What We Do</div>
+          <h2 class="section-title">Services designed for real needs.</h2>
+          <p>From data entry and analysis to research and digital training, our services are built to be practical and results-focused.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service"><div class="icon">📊</div><h3>Data Analytics</h3><p>Data cleaning, analysis, visualization, dashboards, reporting and practical decision support.</p></article>
+          <article class="service"><div class="icon">⌨️</div><h3>Data Entry</h3><p>Accurate data entry, organization, processing and preparation for analysis.</p></article>
+          <article class="service"><div class="icon">🔬</div><h3>Research Support</h3><p>Research tools, data preparation, analysis support and practical academic guidance.</p></article>
+          <article class="service"><div class="icon">🤖</div><h3>AI & Digital Solutions</h3><p>Practical use of AI and digital tools for learning, productivity and business workflows.</p></article>
+          <article class="service"><div class="icon">💻</div><h3>ICT Training</h3><p>Digital skills training designed for students, professionals and beginners.</p></article>
+          <article class="service"><div class="icon">📈</div><h3>Business Analytics</h3><p>Simple, useful reporting and insights to help organizations understand their data.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="training" class="training-wrap">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Training Program</div>
+          <h2 class="section-title">Learn skills you can actually use.</h2>
+          <p>Our current Data Analysis Training Program includes beginner and advanced learning paths.</p>
+        </div>
+
+        <div class="training-card">
+          <div class="flyer">
+            <img src="assets/data-analysis-training.png" alt="ZAKVORA Data Analysis Training Program flyer">
+          </div>
+          <div class="training-bottom">
+            <div>
+              <h3>Ready to join the next cohort?</h3>
+              <p>Complete the application form and follow the training updates.</p>
+            </div>
+            <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSefTYhtO5hGKfilJlCCppqMdBUMI8HnRJL7Nir_20RUgPI4AQ/viewform?usp=dialog" target="_blank" rel="noopener">📝 Apply for Training</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Our Work</div>
+          <h2 class="section-title">Projects, learning and community.</h2>
+          <p>As ZAKVORA grows, this section will showcase selected analytics projects, training activities, research work and digital initiatives.</p>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="portfolio-card"><div class="icon">📊</div><h3>Data Projects</h3><p>Analysis, dashboards, visualization and reporting using real-world datasets.</p></article>
+          <article class="portfolio-card"><div class="icon">🎓</div><h3>Training Activities</h3><p>Practical cohorts for beginners and advanced learners.</p></article>
+          <article class="portfolio-card"><div class="icon">🤝</div><h3>Community & Partnerships</h3><p>Collaborating with students, professionals, organizations and stakeholders.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="socials">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Stay Connected</div>
+          <h2 class="section-title">Follow ZAKVORA.</h2>
+          <p>Follow our platforms for training announcements, resources, projects and company updates.</p>
+        </div>
+
+        <div class="social-grid">
+          <a class="social" href="https://www.linkedin.com/in/zakvora-limited-905327316/" target="_blank" rel="noopener">💼 LinkedIn<span>ZAKVORA Technologies</span></a>
+          <a class="social" href="https://youtube.com/@zakvoratech" target="_blank" rel="noopener">▶️ YouTube<span>@zakvoratech</span></a>
+          <a class="social" href="https://www.facebook.com/share/1WcCAiAMoJ/" target="_blank" rel="noopener">📘 Facebook<span>Follow our page</span></a>
+          <a class="social" href="https://www.instagram.com/zakvoratech/" target="_blank" rel="noopener">📸 Instagram<span>@zakvoratech</span></a>
+          <a class="social" href="https://www.tiktok.com/@zakvora_tech" target="_blank" rel="noopener">🎵 TikTok<span>@zakvora_tech</span></a>
+          <a class="social" href="https://x.com/zakvoratech" target="_blank" rel="noopener">𝕏 X<span>@zakvoratech</span></a>
+          <a class="social" href="https://whatsapp.com/channel/0029Vb5wYaV6LwHhmOreWK28" target="_blank" rel="noopener">📢 WhatsApp Channel<span>Company updates</span></a>
+          <a class="social" href="https://chat.whatsapp.com/G78CU6fM1P956pAPSdtiqU" target="_blank" rel="noopener">👥 WhatsApp Group<span>Join the community</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow" style="color:#55c7ff">Contact</div>
+          <h2 class="section-title">Let's build, learn and grow together.</h2>
+          <p>Interested in our services, training, partnerships or collaboration? Reach out to ZAKVORA Technologies Limited.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-box">
+            <div class="contact-item"><small>Email</small><a href="mailto:zakvoratechnologieslimited@gmail.com">zakvoratechnologieslimited@gmail.com</a></div>
+            <div class="contact-item"><small>Phone / WhatsApp</small><a href="tel:+2349073872804">+234 907 387 2804</a></div>
+            <div class="contact-item"><small>Phone / WhatsApp</small><a href="tel:+23490313371390">+234 903 133 7139</a></div>
+            <div class="contact-item"><small>Location</small><span>Abuja, Nigeria</span></div>
+          </div>
+
+          <div class="contact-box">
+            <h3 style="font-size:25px;margin-bottom:8px">Join our training</h3>
+            <p style="color:#cbd9f5;margin-bottom:20px">Applications are open through the official registration form.</p>
+            <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSefTYhtO5hGKfilJlCCppqMdBUMI8HnRJL7Nir_20RUgPI4AQ/viewform?usp=dialog" target="_blank" rel="noopener">📝 Register Now</a>
+            <a class="btn" style="color:#fff;border-color:rgba(255,255,255,.25);margin-left:7px" href="https://wa.me/2349073872804" target="_blank" rel="noopener">💬 WhatsApp Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div class="footer-brand">ZAKVORA TECHNOLOGIES LIMITED</div>
+      <small>Data • Technology • Research • Digital Solutions</small>
+      <small>© 2026 ZAKVORA Technologies Limited. All Rights Reserved.</small>
+    </div>
+  </footer>
+
+  <div class="float-welcome" id="welcome">
+    <button class="close-welcome" aria-label="Close" onclick="closeWelcome()">×</button>
+    <strong>👋 Welcome to ZAKVORA!</strong>
+    <p>Explore our services, training programs and digital solutions. We are glad to have you here.</p>
+  </div>
+
+  <a class="whatsapp" href="https://wa.me/2349073872804" target="_blank" rel="noopener" aria-label="Chat with ZAKVORA on WhatsApp">💬</a>
+
+  <script>
+    function toggleMenu(){
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+    document.querySelectorAll('#navLinks a').forEach(a=>{
+      a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+    });
+    function closeWelcome(){
+      document.getElementById('welcome').style.display='none';
+    }
+  </script>
+</body>
+</html>
