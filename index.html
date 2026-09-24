@@ -77,6 +77,12 @@ h2.section-title{font-size:clamp(26px,2.6vw,34px);color:#fff}
 .training-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 2px 2px;flex-wrap:wrap}
 .training-bottom h3{font-size:19px;color:#fff}.training-bottom p{color:var(--muted);font-size:14px}
 
+.stats{border-bottom:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.stat{padding:28px;background:var(--panel);text-align:center}
+.stat b{display:block;font-size:32px;color:#fff}
+.stat span{display:block;font-size:13px;color:var(--muted);margin-top:6px}
+
 .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .portfolio-card{padding:24px;background:var(--panel)}
 .portfolio-card h3{margin-bottom:5px;color:#fff;font-size:17px}.portfolio-card p{color:var(--muted);font-size:14px}
@@ -108,11 +114,11 @@ footer{background:var(--bg);color:var(--muted);padding:26px 0}
   .links{display:none}.menu{display:block}
   .links.open{display:flex;position:absolute;left:0;right:0;top:70px;background:var(--bg);padding:18px;flex-direction:column;align-items:stretch;border-bottom:1px solid var(--line)}
   .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
-  .service-grid,.portfolio-grid,.social-grid{grid-template-columns:1fr 1fr}
+  .service-grid,.portfolio-grid,.social-grid,.stats-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:580px){
   .hero{padding:50px 0}section{padding:52px 0}
-  .service-grid,.portfolio-grid,.social-grid{grid-template-columns:1fr}
+  .service-grid,.portfolio-grid,.social-grid,.stats-grid{grid-template-columns:1fr}
   .float-welcome{right:12px;left:12px;bottom:82px;max-width:none}
   .whatsapp{right:14px;bottom:14px}
 }
@@ -215,9 +221,20 @@ footer{background:var(--bg);color:var(--muted);padding:26px 0}
       <div class="training-card">
         <div class="flyer"><img src="assets/data-analysis-training.png" alt="ZAKVORA Data Analysis Training Program flyer"></div>
         <div class="training-bottom">
-          <div><h3>Ready to join the next cohort?</h3><p>Complete the application form and follow the training updates.</p></div>
+          <div><h3>Ready to join the next cohort?</h3><p>Complete the application form and follow the training updates. Refer a friend who registers and you both get a discount on the Advanced class.</p></div>
           <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSefTYhtO5hGKfilJlCCppqMdBUMI8HnRJL7Nir_20RUgPI4AQ/viewform?usp=dialog" target="_blank" rel="noopener">Apply for Training</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stats" class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat"><b data-count="150">0</b><span>Students Trained</span></div>
+        <div class="stat"><b data-count="6">0</b><span>Software Tools Covered</span></div>
+        <div class="stat"><b data-count="98" data-suffix="%">0</b><span>Satisfaction Rate</span></div>
+        <div class="stat"><b data-count="2">0</b><span>Course Levels</span></div>
       </div>
     </div>
   </section>
@@ -301,6 +318,29 @@ footer{background:var(--bg);color:var(--muted);padding:26px 0}
 function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}
 document.querySelectorAll('#navLinks a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
 function closeWelcome(){document.getElementById('welcome').style.display='none'}
+
+// Animated stat counters — count up once when scrolled into view
+const counters=document.querySelectorAll('.stat b[data-count]');
+const counterObserver=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const el=entry.target;
+      const target=parseInt(el.dataset.count,10);
+      const suffix=el.dataset.suffix||'';
+      const duration=1400;
+      const start=performance.now();
+      function tick(now){
+        const progress=Math.min((now-start)/duration,1);
+        el.textContent=Math.floor(progress*target)+suffix;
+        if(progress<1) requestAnimationFrame(tick);
+        else el.textContent=target+suffix;
+      }
+      requestAnimationFrame(tick);
+      counterObserver.unobserve(el);
+    }
+  });
+},{threshold:0.4});
+counters.forEach(el=>counterObserver.observe(el));
 </script>
 </body>
 </html>
